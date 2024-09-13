@@ -161,7 +161,7 @@ class _BudgetCalculatorPageState extends State<BudgetCalculatorPage> {
                   children: [
                     Center(
                       child: Text(
-                        'Available Budget: \$${availableBudget.toStringAsFixed(2)}',
+                        'Available Budget: \u{20B9}${availableBudget.toStringAsFixed(2)}',
                         style: TextStyle(
                             fontSize: 20, fontWeight: FontWeight.bold),
                       ),
@@ -197,7 +197,7 @@ class _BudgetCalculatorPageState extends State<BudgetCalculatorPage> {
           label: value.round().toString(),
           onChanged: onChanged,
         ),
-        Text("\$${value.toStringAsFixed(2)}"),
+        Text("\u{20B9}${value.toStringAsFixed(2)}"),
         SizedBox(height: 10),
       ],
     );

@@ -5,6 +5,7 @@ import 'package:smart_expense_tracker/screens/budget_calculator.dart';
 import 'package:smart_expense_tracker/screens/home.dart';
 import 'package:smart_expense_tracker/screens/profile.dart';
 import 'package:smart_expense_tracker/screens/savings.dart';
+import 'package:smart_expense_tracker/screens/summary.dart';
 import 'package:smart_expense_tracker/screens/transaction.dart';
 import 'package:smart_expense_tracker/screens/wallet_lists.dart';
 
@@ -22,7 +23,7 @@ class _DashboardState extends State<Dashboard> {
 
   final List<Widget> _pages = [
     const Home(),
-    Transaction(transactions: [],),
+    const Summary(),
     const Savings(),
     const Profile(),
   ];
@@ -59,8 +60,8 @@ class _DashboardState extends State<Dashboard> {
               label: 'Home',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.swap_horiz),
-              label: 'Transaction',
+              icon: Icon(Icons.summarize),
+              label: 'Summary',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.savings),
