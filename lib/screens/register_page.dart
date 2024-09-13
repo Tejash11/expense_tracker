@@ -36,14 +36,30 @@ class _RegisterPageState extends State<RegisterPage> {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text('Registered successfully!'),
-            backgroundColor: Colors.green, // You can change this to any color
+            backgroundColor: Colors.green,
+            // You can change this to any color
             duration: Duration(seconds: 2),
+            behavior: SnackBarBehavior.floating,
+            // Make the SnackBar float
+            margin: EdgeInsets.all(16),
           ),
         );
         // Registration successful, navigate to login page
         Navigator.pop(context);
       } else {
         print('Registration failed: ${response.body}');
+        // Show error SnackBar
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Login failed. Please check your credentials.'),
+            backgroundColor: Colors.red,
+            // You can change this to any color
+            duration: Duration(seconds: 2),
+            behavior: SnackBarBehavior.floating,
+            // Make the SnackBar float
+            margin: EdgeInsets.all(16),
+          ),
+        );
       }
     } catch (e) {
       print('Error: $e');
@@ -51,8 +67,12 @@ class _RegisterPageState extends State<RegisterPage> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('An error occurred. Please try again.'),
-          backgroundColor: Colors.red, // You can change this to any color
+          backgroundColor: Colors.red,
+          // You can change this to any color
           duration: Duration(seconds: 2),
+          behavior: SnackBarBehavior.floating,
+          // Make the SnackBar float
+          margin: EdgeInsets.all(16),
         ),
       );
     }
@@ -68,8 +88,10 @@ class _RegisterPageState extends State<RegisterPage> {
           color: Colors.white, // Change back arrow color to white
         ),
       ),
-      resizeToAvoidBottomInset: true, // This prevents the RenderFlex issue when the keyboard is open
-      body: SingleChildScrollView( // Wraps the content to allow scrolling
+      resizeToAvoidBottomInset: true,
+      // This prevents the RenderFlex issue when the keyboard is open
+      body: SingleChildScrollView(
+        // Wraps the content to allow scrolling
         child: Padding(
           padding: EdgeInsets.all(16.0),
           child: Column(
@@ -78,37 +100,51 @@ class _RegisterPageState extends State<RegisterPage> {
               Align(
                 alignment: Alignment.topCenter,
                 child: SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.6, // Set width to 60% of screen width
-                  height: MediaQuery.of(context).size.height * 0.4, // Set height to 40% of screen height
+                  width: MediaQuery.of(context).size.width *
+                      0.6, // Set width to 60% of screen width
+                  height: MediaQuery.of(context).size.height *
+                      0.4, // Set height to 40% of screen height
                   child: Image.asset(
                     'assets/images/login.png', // Ensure this path is correct
-                    fit: BoxFit.contain, // Adjust image to fit within the SizedBox
+                    fit: BoxFit
+                        .contain, // Adjust image to fit within the SizedBox
                   ),
                 ),
               ),
               SizedBox(height: 20),
               TextField(
                 controller: _nameController,
-                decoration: InputDecoration(labelText: 'Name', border: OutlineInputBorder()),
+                decoration: InputDecoration(
+                    labelText: 'Name', border: OutlineInputBorder()),
               ),
               SizedBox(height: 16),
               TextField(
                 controller: _emailController,
-                decoration: InputDecoration(labelText: 'Email', border: OutlineInputBorder()),
+                decoration: InputDecoration(
+                    labelText: 'Email', border: OutlineInputBorder()),
                 keyboardType: TextInputType.emailAddress,
               ),
               SizedBox(height: 16),
               TextField(
                 controller: _passwordController,
-                decoration: InputDecoration(labelText: 'Password', border: OutlineInputBorder()),
+                decoration: InputDecoration(
+                    labelText: 'Password', border: OutlineInputBorder()),
                 obscureText: true,
               ),
               SizedBox(height: 16),
               ElevatedButton(
                 onPressed: _register,
                 child: Text('Register'),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.blue,
+                  textStyle: TextStyle(fontSize: 18),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  foregroundColor: Colors.white,
+                  elevation: 2,
+                ),
               ),
-
             ],
           ),
         ),

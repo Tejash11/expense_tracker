@@ -39,6 +39,8 @@ class _ProfileState extends State<Profile> {
             content: Text('Logout successful!'),
             backgroundColor: Colors.green, // You can change this to any color
             duration: Duration(seconds: 2),
+            behavior: SnackBarBehavior.floating, // Make the SnackBar float
+            margin: EdgeInsets.all(16),
           ),
         );
 
@@ -54,6 +56,8 @@ class _ProfileState extends State<Profile> {
             content: Text('Logout failed. Please check your internet connection'),
             backgroundColor: Colors.red, // You can change this to any color
             duration: Duration(seconds: 2),
+            behavior: SnackBarBehavior.floating, // Make the SnackBar float
+            margin: EdgeInsets.all(16),
           ),
         );
       }
@@ -67,6 +71,8 @@ class _ProfileState extends State<Profile> {
           content: Text('An error occurred. Please try again.'),
           backgroundColor: Colors.red, // You can change this to any color
           duration: Duration(seconds: 2),
+          behavior: SnackBarBehavior.floating, // Make the SnackBar float
+          margin: EdgeInsets.all(16),
         ),
       );
     }

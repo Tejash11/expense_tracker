@@ -65,14 +65,14 @@ class Onboarding1 extends StatelessWidget {
               },
               child: Text('Get Started'),
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.blue, // Button color
-                foregroundColor: Colors.white, // Text color
-                padding: EdgeInsets.symmetric(vertical: 20.0), // Increased vertical padding
-                minimumSize: Size(double.infinity, 50), // Make the button wider and taller
+                minimumSize: Size(double.infinity, 50),
+                backgroundColor: Colors.blue,
+                textStyle: TextStyle(fontSize: 18),
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12.0), // Rounded corners
+                  borderRadius: BorderRadius.circular(8),
                 ),
-                elevation: 5, // Shadow effect
+                foregroundColor: Colors.white,
+                elevation: 5,
               ),
             ),
           ),

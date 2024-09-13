@@ -14,7 +14,6 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
-
   Future<void> _signInWithEmail() async {
     final email = _emailController.text.trim();
     final password = _passwordController.text.trim();
@@ -35,9 +34,11 @@ class _LoginPageState extends State<LoginPage> {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text('Login successful!'),
-            backgroundColor: Colors.green, // You can change this to any color
+            backgroundColor: Colors.green,
+            // You can change this to any color
             duration: Duration(seconds: 2),
-            behavior: SnackBarBehavior.floating, // Make the SnackBar float
+            behavior: SnackBarBehavior.floating,
+            // Make the SnackBar float
             margin: EdgeInsets.all(16),
           ),
         );
@@ -51,8 +52,12 @@ class _LoginPageState extends State<LoginPage> {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text('Login failed. Please check your credentials.'),
-            backgroundColor: Colors.red, // You can change this to any color
+            backgroundColor: Colors.red,
+            // You can change this to any color
             duration: Duration(seconds: 2),
+            behavior: SnackBarBehavior.floating,
+            // Make the SnackBar float
+            margin: EdgeInsets.all(16),
           ),
         );
       }
@@ -64,8 +69,12 @@ class _LoginPageState extends State<LoginPage> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('An error occurred. Please try again.'),
-          backgroundColor: Colors.red, // You can change this to any color
+          backgroundColor: Colors.red,
+          // You can change this to any color
           duration: Duration(seconds: 2),
+          behavior: SnackBarBehavior.floating,
+          // Make the SnackBar float
+          margin: EdgeInsets.all(16),
         ),
       );
     }
@@ -139,89 +148,120 @@ class _LoginPageState extends State<LoginPage> {
       appBar: AppBar(
         title: Text('Login', style: TextStyle(color: Colors.white)),
         backgroundColor: Colors.blue,
-      ),
-      resizeToAvoidBottomInset: true, // Allows content to resize when keyboard opens
-      body: SingleChildScrollView( // Makes the UI scrollable when keyboard is open
-        child: Padding(
-          padding: EdgeInsets.all(16.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Align(
-                alignment: Alignment.topCenter,
-                child: SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.6, // Set width to 70% of screen width
-                  height: MediaQuery.of(context).size.height * 0.4, // Set height to 40% of screen height
-                  child: Image.asset(
-                    'assets/images/login.png', // Ensure this path is correct
-                    fit: BoxFit.contain, // Adjust image to fit within the SizedBox
-                  ),
-                ),
-              ),
-              SizedBox(height: 20),
-              TextField(
-                controller: _emailController,
-                decoration: InputDecoration(
-                  labelText: 'Email',
-                  border: OutlineInputBorder(),
-                ),
-                keyboardType: TextInputType.emailAddress,
-              ),
-              SizedBox(height: 16),
-              TextField(
-                controller: _passwordController,
-                decoration: InputDecoration(
-                  labelText: 'Password',
-                  border: OutlineInputBorder(),
-                ),
-                obscureText: true,
-              ),
-              SizedBox(height: 16),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  ElevatedButton(
-                    onPressed: _signInWithEmail,
-                    child: Text('Login with Email'),
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/register');
-                    },
-                    child: Text('Register Now'),
-                  ),
-                ],
-              ),
-              SizedBox(height: 16),
-              ElevatedButton(
-                onPressed: _signInWithGoogle,
-                child: Text('Login with Google'),
-              ),
-              SizedBox(height: 20),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 40.0),
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushReplacementNamed(context, '/dashboard');
-                  },
-                  child: Text('Skip Now', style: TextStyle(fontSize: 16)),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.blue,
-                    foregroundColor: Colors.white,
-                    padding: EdgeInsets.symmetric(vertical: 20.0),
-                    minimumSize: Size(double.infinity, 50),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12.0),
-                    ),
-                    elevation: 5,
-                  ),
-                ),
-              ),
-            ],
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.pushReplacementNamed(context, '/dashboard');
+            },
+            child: Text('Skip Now',
+                style: TextStyle(color: Colors.white, fontSize: 16)),
           ),
+          SizedBox(width: 16),
+          // Add spacing between the Skip button and the end of the AppBar
+        ],
+      ),
+      body: SingleChildScrollView(
+        padding: EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Align(
+              alignment: Alignment.topCenter,
+              child: SizedBox(
+                width: MediaQuery.of(context).size.width * 0.6,
+                height: MediaQuery.of(context).size.height * 0.4,
+                child: Image.asset(
+                  'assets/images/login.png',
+                  fit: BoxFit.contain,
+                ),
+              ),
+            ),
+            SizedBox(height: 20),
+            TextField(
+              controller: _emailController,
+              decoration: InputDecoration(
+                labelText: 'Email',
+                border: OutlineInputBorder(),
+              ),
+              keyboardType: TextInputType.emailAddress,
+            ),
+            SizedBox(height: 16),
+            TextField(
+              controller: _passwordController,
+              decoration: InputDecoration(
+                labelText: 'Password',
+                border: OutlineInputBorder(),
+              ),
+              obscureText: true,
+            ),
+            SizedBox(height: 16),
+            ElevatedButton(
+              onPressed: _signInWithEmail,
+              child: Text('Login with Email'),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.blue,
+                textStyle: TextStyle(fontSize: 18),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                foregroundColor: Colors.white,
+              ),
+            ),
+            SizedBox(height: 10),
+            Text(
+              'OR',
+              style: TextStyle(color: Colors.grey, fontSize: 16),
+            ),
+            SizedBox(height: 10),
+            Container(
+              width: MediaQuery.of(context).size.width * 0.3,
+              child: Card(
+                elevation: 3,
+                child: InkWell(
+                  onTap: _signInWithGoogle,
+                  child: Container(
+                    padding: EdgeInsets.symmetric(vertical: 10),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset(
+                          'assets/images/google_logo.png',
+                          // Path to Google logo image
+                          height: 24,
+                        ),
+                        SizedBox(width: 12),
+                        Text(
+                          'Google',
+                          style: TextStyle(fontSize: 18, color: Colors.black),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(height: 16),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'New User?',
+                  style: TextStyle(color: Colors.grey, fontSize: 16),
+                ),
+                TextButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/register');
+                  },
+                  child: Text(
+                    'Register now',
+                    style: TextStyle(color: Colors.blue, fontSize: 16),
+                  ),
+                ),
+              ],
+            ),
+          ],
         ),
       ),
     );
   }
-
 }
