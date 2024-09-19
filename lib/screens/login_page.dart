@@ -21,7 +21,7 @@ class _LoginPageState extends State<LoginPage> {
     try {
       // Sending POST request to backend for email/password login
       final response = await http.post(
-        Uri.parse('http://192.168.159.216:5000/api/auth/login'),
+        Uri.parse('http://192.168.1.4:5000/api/v1/login'),
         headers: {'Content-Type': 'application/json'},
         body: jsonEncode({'email': email, 'password': password}),
       );

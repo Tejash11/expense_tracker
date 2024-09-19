@@ -25,7 +25,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
     try {
       final response = await http.post(
-        Uri.parse('http://192.168.159.216:5000/api/auth/register'),
+        Uri.parse('http://192.168.1.4:5000/api/v1/signup'),
         headers: {'Content-Type': 'application/json'},
         body: jsonEncode({'name': name, 'email': email, 'password': password}),
       );

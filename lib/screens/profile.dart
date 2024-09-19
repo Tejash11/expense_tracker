@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:http/http.dart' as http;
+import 'package:smart_expense_tracker/screens/chatbot.dart';
 
 class Profile extends StatefulWidget {
   const Profile({super.key});
@@ -24,7 +25,7 @@ class _ProfileState extends State<Profile> {
     try {
       // Sending POST request to backend for email/password logout
       final response = await http.post(
-        Uri.parse('http://192.168.159.216:5000/api/auth/logout'),
+        Uri.parse('http://192.168.1.4:5000/api/v1/logout'),
         headers: {'Content-Type': 'application/json'},
         body: jsonEncode({'email': email, 'password': password}),
       );
@@ -157,6 +158,16 @@ class _ProfileState extends State<Profile> {
             leading: Icon(Icons.share, color: Colors.blue),
             title: Text('Refer to a Friend'),
             onTap: _shareApp,
+          ),
+          ListTile(
+            leading: Icon(Icons.mark_unread_chat_alt_sharp, color: Colors.blue),
+            title: Text('Chatbot'),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Chatbot()),
+              );
+            },
           ),
         ],
       ),
